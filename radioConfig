@@ -11,17 +11,19 @@ yad --form --width=420 --text-align=center --center --title="Radio Config" \
 		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
 		--text="<b>Make sure Radio is not connected</b>" \
 		--button="Continue":2
-		exit
-
-arecord -l | 
+		
+echo "running sound card check"
+arecord -l 
+arecord -l >> noRadioAudio.txt 
 ## check for serial port
 yad --form --width=420 --text-align=center --center --title="Radio Config" \
 		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
 		--text="<b>Connect up radio</b>" \
 		--button="Continue":2
-		exit
-
-arecord -l | 		
+		
+echo "running the check with radio connected"
+arecord -l  
+arecord -l >> RadioAudio.txt
 ## do a compare to check for audio port 
 ## check for serial port
 
@@ -30,7 +32,7 @@ yad --form --width=420 --text-align=center --center --title="Radio Config" \
 		--text="<b>Leave Radio connected </b>" \
 		--text="<b>running Ardop</b>" \
 		--button="Continue":2
-		exit
+		
 
 ## run ardop to check and make sure ardop will start
 ardopc | 
@@ -38,3 +40,4 @@ ardopc |
 if freq=freq needs to be set 
 	then 
 		#add .asoundrc to home directory that has port and 
+
