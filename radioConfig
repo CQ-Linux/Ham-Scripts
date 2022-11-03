@@ -1,7 +1,40 @@
+
+
+#20221102
+
+
+
+MYPATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+LOGO=${MYPATH}/logo.png
+
 yad --form --width=420 --text-align=center --center --title="Radio Config" \
 		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
-		--text="<b>version $VERSION</b>" \
-		--field="Call Sign*" \
-		--field="<b>* Required</b>":LBL \
+		--text="<b>Make sure Radio is not connected</b>" \
 		--button="Continue":2
 		exit
+
+arecord -l | 
+## check for serial port
+yad --form --width=420 --text-align=center --center --title="Radio Config" \
+		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
+		--text="<b>Connect up radio</b>" \
+		--button="Continue":2
+		exit
+
+arecord -l | 		
+## do a compare to check for audio port 
+## check for serial port
+
+yad --form --width=420 --text-align=center --center --title="Radio Config" \
+		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
+		--text="<b>Leave Radio connected </b>" \
+		--text="<b>running Ardop</b>" \
+		--button="Continue":2
+		exit
+
+## run ardop to check and make sure ardop will start
+ardopc | 
+
+if freq=freq needs to be set 
+	then 
+		#add .asoundrc to home directory that has port and 
