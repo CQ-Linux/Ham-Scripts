@@ -1,0 +1,7 @@
+yad --form --width=420 --text-align=center --center --title="Radio Config" \
+		--image ${LOGO} --window-icon=${LOGO} --image-on-top --separator="|" --item-separator="|" \
+		--text="<b>version $VERSION</b>" \
+		--field="Call Sign*" \
+		--field="<b>* Required</b>":LBL \
+		--button="Continue":2
+		exit
